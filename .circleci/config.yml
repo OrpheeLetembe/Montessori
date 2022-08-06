@@ -36,6 +36,20 @@ jobs:
             docker build -t orphee1980/montessori:$CIRCLE_SHA1 .
             docker push orphee1980/montessori:$CIRCLE_SHA1
 
+  deploy:
+    machine: true
+    working_directory: ~/project
+
+    steps:
+      - checkout
+      - run:
+          name: Deploy to Heroku
+          command: |
+            docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
+            docker pull orphee1980/montessori:$CIRCLE_SHA1
+            docker tag orphee1980/montessori:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
+            docker push registry.heroku.com/$HEROKU_APP_NAME/web
+
 
 workflows:
   test_build_deploy:
@@ -47,4 +61,9 @@ workflows:
           filters:
             branches:
               only: main
-
+      - deploy:
+          requires:
+            - build_image
+          filters:
+            branches:
+              only: main
