@@ -1,0 +1,31 @@
+
+version: 2.1
+
+
+orbs:
+
+  python: circleci/python@1.5.0
+
+
+jobs:
+  linting-and-test:
+    docker:
+      - image: cimg/python:3.9
+
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Run linting
+          command: flake8
+      - run:
+          name: Run tests
+          command: pytest
+
+
+workflows:
+  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run
+    jobs:
+      - linting-and-test

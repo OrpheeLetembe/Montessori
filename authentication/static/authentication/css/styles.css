@@ -1,0 +1,43 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Lato:wght@300;400&family=Open+Sans:ital,wght@0,300;1,300&display=swap');
+
+.bloc-contain{
+    font-family: "Lato", Helvetica, sans-serif
+
+}
+
+.navbar li {
+      list-style: none;
+      text-align: left;
+}
+
+.sub-ambiance {
+    display: none;
+}
+
+.menu-ambiance:hover .sub-ambiance {
+	display: inline;
+}
+
+
+
+h1{
+    font-size : clamp(1rem, 4vw, 5rem);
+}
+
+h2{
+    font-size : clamp(0.5rem, 3vw, 4rem);
+}
+
+<style>
+    @page {
+        size: letter portrait;
+        @frame content_frame {
+            left: 50pt;
+            width: 512pt;
+            top: 50pt;
+            height: 692pt;
+            -pdf-frame-border: 1;    /* for debugging the layout */
+        }
+    }
+</style>

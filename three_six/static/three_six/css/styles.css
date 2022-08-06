@@ -1,0 +1,87 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Lato:wght@300;400&family=Open+Sans:ital,wght@0,300;1,300&display=swap');
+
+body{
+    font-family: "Lato", Helvetica, sans-serif
+
+}
+
+
+body, html{
+    margin:0;
+    padding:0;
+    height:100%;
+}
+.header {
+    display: flex;
+	justify-content: space-between;
+	align-items: center;
+    background-color: #FFFFFF ;
+	position: fixed;
+	width: 80%;
+	height: 100px;
+	top: 0px;
+	z-index: 4;
+	border: black 1px solid;
+}
+
+
+
+.block-content{
+    width: 80%;
+    position: relative;
+   /* background-color: #2C3E50 ;*/
+    margin: auto;
+    min-height: 80%;
+    padding-top: 100px;
+
+
+}
+
+.navbar li {
+      list-style: none;
+      text-align: left;
+}
+
+
+.sub-domain, .sub-printed {
+    display: none;
+}
+
+.menu-domain:hover .sub-domain {
+	display: inline;
+}
+
+.printed:hover .sub-printed {
+	display: inline;
+}
+
+.footer {
+  position: absolute;
+  width: 100%;
+
+  margin-top: 10 px;
+
+  /*bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: red;
+  color: white;*/
+  text-align: center;
+}
+
+.footer-content{
+     border: black 1px solid;
+
+}
+h1{
+    font-size : clamp(2rem, 10vw, 5rem);
+}
+
+h2{
+    font-size : clamp(0.5rem, 2vw, 3rem);
+}
+
+h3{
+    font-size : clamp(0.5rem, 2vw, 3rem);
+}

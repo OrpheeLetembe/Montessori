@@ -1,0 +1,27 @@
+{% extends "authentication/base.html" %}
+
+{% block title %}Modifier-{{student}}{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <p><img class="rounded-circle" src="{{student.photo.url}}" width="130" height="130"></p>
+        </div>
+        <div class="col-md-8">
+            <div class="activiy_form">
+                <form method='post' enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <button class="btn btn-outline-dark" type='submit' >Enregistrer</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a href="{% url 'all_child' ambiance_id=student.ambiance.id %}">Retour</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

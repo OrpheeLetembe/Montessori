@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/
+        normalize.min.css">
+        <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'three_six/css/styles.css'%}">
+    </head>
+    <body>
+        <div class="block-content">
+            <header  class="header">
+                        <div class=>
+                            <img src="{% static 'authentication/logo.png' %}" alt="LOGO" width="200" >
+                        </div>
+                        <div>
+                            <a href="{% url 'all_child' ambiance_id=student.ambiance.id %}">Retour</a> <br>
+                            <a href="{% url 'logout' %}">Se déconnecter</a>
+                        </div>
+
+           </header>
+            <div class="container pt-5">
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                         <p><img class="rounded-circle" src="{{student.photo.url}}" width="130" height="130"></p>
+                        <ul class="navbar text-left">
+                                <li class="menu-domain"><a href="#"><b>Domaines</b></a>
+                                    <ul class="sub-domain">
+                                        <li><a href="{% url 'Vie_Pratique_change' student_id=student.id %}">Vie Pratique</a> </li>
+                                        <li><a href="{% url 'Materiel_sensoriel_change' student_id=student.id %}">Matériel Sensoriel</a> </li>
+                                        <li><a href="{% url 'Mathematiques_change' student_id=student.id %}">Mathématiques</a> </li>
+                                        <li><a href="{% url 'Langage_change' student_id=student.id %}">Langage</a> </li>
+                                    </ul>
+                                </li>
+                                <li class="printed"><a href="#"><b>Imprimer</b></a>
+                                    <ul class="sub-printed">
+                                        <li><a href="{% url 'print_choice' pk=student.id %}">Bilan</a></li>
+                                        <li><a href="{% url 'print' pk=student.id %}">Dossier</a></li>
+                                    </ul>
+                                </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-10 ">
+                        {% block content %}{% endblock content %}
+                    </div>
+                </div>
+
+            </div>
+              <div class="footer pt-5 mb-1">
+                  <div class="footer-content">
+                      <p>LA MAISON DES ENFANTS</p>
+                  </div>
+
+                </div>
+        </div>
+    </body>
+</html>

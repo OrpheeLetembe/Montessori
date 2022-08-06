@@ -1,0 +1,24 @@
+{% extends "authentication/base.html" %}
+
+{% block title %}Connection{% endblock %}
+
+{% block content %}
+
+<div class="row forms">
+    <div class="col-md-6 d-flex align-items-start flex-column">
+        <div class="mb-auto p-2">
+            <a href="{% url 'signup'%}">S'enregistrer</a>
+        </div>
+    </div>
+    <div class="col-md-6 login">
+        <p>{{ message}}</p>
+        <div class="login_form">
+            <form method='post'> {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-outline-dark" type='submit' >Se connecter</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

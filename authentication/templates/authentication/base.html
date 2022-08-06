@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'authentication/css/styles.css'%}">
+    </head>
+    <body>
+        <div class="container-fluid bloc-contain" >
+            <header class="site-header align-items-center">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="{% static 'authentication/logo.png' %}" alt="LOGO" class="img-fluid" width="200" >
+                    </div>
+                    <div class="col-md-8">
+                         <h2 class="text-center">SUIVI DES APPRENTISSAGES</h2>
+                    </div>
+                     <div class="col-md-2">
+                    </div>
+                </div>
+
+
+            </header>
+            <div class="container pt-5" >
+
+                 {% block content %}{% endblock content %}
+            </div>
+        </div>
+    </body>
+</html>
