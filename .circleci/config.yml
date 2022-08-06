@@ -40,10 +40,10 @@ jobs:
 workflows:
   test_build_deploy:
     jobs:
-      - lintng-and-tests
+      - linting-and-tests
       - build_image:
           requires:
-            - lintng-and-tests
+            - linting-and-tests
           filters:
             branches:
               only: main
