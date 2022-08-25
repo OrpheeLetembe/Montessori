@@ -3,24 +3,16 @@
 {% block content %}
 <h1>MATHEMATIQUES</h1>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-">
-            <div class="activiy_form">
-                {% if form.errors %}
-                    {{form.errors }}
-                {% endif %}
-                <form method='post'> {% csrf_token %}
-                    <table class="table table-bordered table-responsive{-sm|-md|-lg|-xl}">
-                        {{ form.as_table}}
-                    </table>
-                    <button class="btn btn-outline-dark" type='submit' >Enregistrer</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-1"></div>
-    </div>
+<div class="bg-gray-100">
+    {% if form.errors %}
+        {{form.errors }}
+    {% endif %}
+    <form method='post'> {% csrf_token %}
+        <table class="table table-bordered">
+            {{ form.as_table}}
+        </table>
+    <button class="btn btn-outline-dark" type='submit' >Enregistrer</button>
+    </form>
 </div>
 
 

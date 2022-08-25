@@ -1,7 +1,8 @@
 import os
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from datetime import date
+from datetime import timedelta, date
+
 
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -55,11 +56,15 @@ def students_ambiance_list(request, ambiance_id):
 
     ambiance = Environment.objects.get(id=ambiance_id)
     students = Students.objects.filter(ambiance=ambiance).order_by('lastname')
+    today = int(date.today().year)
+    ambiance_end_date = int(ambiance.year.split('/')[0])
 
     context = {
         'ambiance': ambiance,
         'students': students,
         'user': request.user,
+        'today': today,
+        'ambiance_end_date': ambiance_end_date
     }
     return render(request, 'students/ambiance_child_all.html', context=context)
 
@@ -69,9 +74,11 @@ def student_active(request, ambiance_id):
 
     students = Students.objects.filter(active=True)
     ambiance = Environment.objects.get(id=ambiance_id)
+
     context = {
         'students': students,
-        'ambiance': ambiance
+        'ambiance': ambiance,
+
     }
     return render(request, 'students/child_all.html', context=context)
 
@@ -166,6 +173,26 @@ def student_bilan_pdf_view(request, pk):
     }
     return render(request, 'students/choice_print.html', context=context)
 
+
+@login_required
+def show_doc(request, id):
+    student = Students.objects.get(id=id)
+    pls = student.pratique_life
+    mss = student.sensorial_material
+    mathes = student.mathe
+    lang = student.langage
+    lt = student.letter
+
+    context = {
+        'student': student,
+        'pls': pls,
+        'mss': mss,
+        'mts': mathes,
+        'lang': lang,
+        'lt': lt
+    }
+
+    return render(request, 'students/dossier.html', context=context)
 
 @login_required
 def student_doc_pdf_view(request, pk):

@@ -1,60 +1,69 @@
 <!DOCTYPE html>
+{% load tailwind_tags %}
 {% load static %}
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/
-        normalize.min.css">
+        {% tailwind_css %}
         <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'three_six/css/styles.css'%}">
+        <!-- <link rel="stylesheet" href="{% static 'authentication/css/styles.css'%}">-->
     </head>
-    <body>
-        <div class="block-content">
-            <header  class="header">
-                        <div class=>
-                            <img src="{% static 'authentication/logo.png' %}" alt="LOGO" width="200" >
-                        </div>
-                        <div>
-                            <a href="{% url 'all_child' ambiance_id=student.ambiance.id %}">Retour</a> <br>
-                            <a href="{% url 'logout' %}">Se déconnecter</a>
-                        </div>
+    <body >
+        <div class="flex">
+            <nav class="border-2p-2 m-10">
+                <div class="shadow-lg shadow-gray-200 rounded-lg fixed w-80">
+                    <div class="mb-3 ">
+                         <img class="rounded-circle" src="{{student.photo.url}}" alt="">
+                    </div>
+                    <ul class="">
+                        <li>
+                            <a class="py-1 px-2 text-blue-500 hover:text-blue-800 font-semibold" href="{% url 'student_change' student_id=student.id %}">Profil</a>
+                        </li>
+                         <li>
+                            <a class="inline-block py-1 px-2 text-blue-500 hover:text-blue-800 font-semibold" href="{% url 'Vie_Pratique_change' student_id=student.id %}">Vie Pratique</a>
+                        </li>
+                         <li>
+                            <a class="inline-block py-1 px-2 text-blue-500 hover:text-blue-800 font-semibold" href="{% url 'Materiel_sensoriel_change' student_id=student.id %}">Matériel Sensoriel</a>
+                        </li>
+                         <li>
+                            <a class="inline-block py-1 px-2 text-blue-500 hover:text-blue-800 font-semibold" href="{% url 'Mathematiques_change' student_id=student.id %}">Mathématiques</a>
+                        </li>
+                        <li>
+                            <a class="inline-block py-1 px-2 text-blue-500 hover:text-blue-800 font-semibold" href="{% url 'Langage_change' student_id=student.id %}">Langage</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a class="inline-block py-1 px-2 text-blue-500 hover:text-blue-800 font-semibold" href="{% url 'print_choice' pk=student.id %}">Bilan</a>
+                        </li>
+                         <li>
+                            <a class="inline-block py-1 px-2 text-blue-500 hover:text-blue-800 font-semibold" href="{% url 'dossier_student' id=student.id %}">Dossier</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a class="inline-block py-1 px-2 text-blue-500 hover:text-blue-800 font-semibold" href="{% url 'all_child' ambiance_id=student.ambiance.id %}">Ambiance</a>
+                        </li>
+                         <li>
+                            <a class="inline-block py-1 px-2 text-blue-500 hover:text-blue-800 font-semibold" href="{% url 'logout' %}">Déconnection</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div>
+                <h1 class="text-base text-white">{{student.ambiance.name}}</h1>
 
-           </header>
-            <div class="container pt-5">
-                <div class="row">
-                    <div class="col-md-2 text-center">
-                         <p><img class="rounded-circle" src="{{student.photo.url}}" width="130" height="130"></p>
-                        <ul class="navbar text-left">
-                                <li class="menu-domain"><a href="#"><b>Domaines</b></a>
-                                    <ul class="sub-domain">
-                                        <li><a href="{% url 'Vie_Pratique_change' student_id=student.id %}">Vie Pratique</a> </li>
-                                        <li><a href="{% url 'Materiel_sensoriel_change' student_id=student.id %}">Matériel Sensoriel</a> </li>
-                                        <li><a href="{% url 'Mathematiques_change' student_id=student.id %}">Mathématiques</a> </li>
-                                        <li><a href="{% url 'Langage_change' student_id=student.id %}">Langage</a> </li>
-                                    </ul>
-                                </li>
-                                <li class="printed"><a href="#"><b>Imprimer</b></a>
-                                    <ul class="sub-printed">
-                                        <li><a href="{% url 'print_choice' pk=student.id %}">Bilan</a></li>
-                                        <li><a href="{% url 'print' pk=student.id %}">Dossier</a></li>
-                                    </ul>
-                                </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-10 ">
-                        {% block content %}{% endblock content %}
-                    </div>
+            </div>
+
+            <div class=" container mb-10 w-80">
+                <div class="">
+                    {% block content %}{% endblock content %}
+
                 </div>
 
             </div>
-              <div class="footer pt-5 mb-1">
-                  <div class="footer-content">
-                      <p>LA MAISON DES ENFANTS</p>
-                  </div>
-
-                </div>
         </div>
     </body>
 </html>

@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('authentication.urls')),
     path('', include('students.urls')),
     path('', include('three_six.urls')),
+    path("__reload__/", include("django_browser_reload.urls")),
 ]
 
 if settings.DEBUG:

@@ -3,9 +3,9 @@
 {% block title %}Ajouter un enfant{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+<div class=" flex flex-col items-center">
+    <a class="w-full" href="javascript:history.back()">Annuler</a>
+    <div class="mt-5">
         {% if form.errors %}
             {{form.errors }}
         {% endif %}
@@ -14,9 +14,6 @@
                 {{ form.as_p}}
             <button class="btn btn-outline-dark" type='submit' >Ajouter</button>
         </form>
-    </div>
-    <div class="col-md-2">
-        <a href="{% url 'all_child' ambiance_id=ambiance.id %}">Retour</a>
     </div>
 </div>
 {% endblock content %}

@@ -1,20 +1,18 @@
 {% extends "authentication/base.html" %}
 {% block title %}Formulaire d'enregistrement{% endblock %}
 {% block content %}
-    <div class="row ">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+    <div class="container mx-auto flex flex-col items-center mb-10">
+         <div class="w-full md:w-1/3 mb-5">
+            <a href="{% url 'login'%}">Retour</a>
+        </div>
+        <div class="w-full md:w-1/3">
             {% if form.errors %}
                     {{form.errors }}
-                {% endif %}
-                <form method='post'>{% csrf_token %}
+            {% endif %}
+            <form method='post'>{% csrf_token %}
                 {{ form.as_p }}
-                    <button class="btn btn-outline-dark" type="submit">S'enregistrer</button>
-                </form>
-
-        </div>
-        <div class="col-md-2">
-            <a href="{% url 'login'%}">Retour</a>
+                <button class="btn btn-outline-dark" type="submit">S'enregistrer</button>
+            </form>
         </div>
     </div>
 {% endblock content %}

@@ -4,7 +4,7 @@ from .models import Environment
 
 
 class EnvironmentForm(forms.ModelForm):
-    year = forms.CharField(required=True, label="Année scolaire",
+    year = forms.CharField(required=True, label="Année scolaire (début/fin)",
                            widget=forms.TextInput(attrs={"class": "form-control"}))
 
     class Meta:

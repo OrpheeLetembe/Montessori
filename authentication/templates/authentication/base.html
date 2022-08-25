@@ -1,33 +1,24 @@
 <!DOCTYPE html>
+{% load tailwind_tags %}
 {% load static %}
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% tailwind_css %}
         <link rel="stylesheet" href="{% static 'authentication/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'authentication/css/styles.css'%}">
+       <!-- <link rel="stylesheet" href="{% static 'authentication/css/styles.css'%}">-->
     </head>
     <body>
-        <div class="container-fluid bloc-contain" >
-            <header class="site-header align-items-center">
-                <div class="row">
-                    <div class="col-md-2">
-                        <img src="{% static 'authentication/logo.png' %}" alt="LOGO" class="img-fluid" width="200" >
-                    </div>
-                    <div class="col-md-8">
-                         <h2 class="text-center">SUIVI DES APPRENTISSAGES</h2>
-                    </div>
-                     <div class="col-md-2">
-                    </div>
-                </div>
-
-
+            <header class="container top-0 mx-auto flex flex-col">
+                    <img src="{% static 'authentication/logo.png' %}" alt="LOGO" class="img-fluid" width="200" >
+                     <h1 class="text-center font-bold py-10 text-2xl">SUIVI DES APPRENTISSAGES</h1>
             </header>
-            <div class="container pt-5" >
-
-                 {% block content %}{% endblock content %}
+            <div class=" container p-2">
+                {% block content %}{% endblock content %}
             </div>
-        </div>
+
+    <script src="./app.js"></script>
     </body>
 </html>
