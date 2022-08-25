@@ -7,7 +7,7 @@ import pytest
 def test_ambiance_str():
 
     """
-    Testing whether Ambiance's __str__ method is implemented properly
+    Testing whether Ambiance's __str__ method is implemented properly.
     """
 
     ambiance = Environment.objects.create(
