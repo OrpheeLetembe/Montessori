@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from datetime import timedelta, date
+from datetime import date
 
 
 from django.http import HttpResponse
@@ -193,6 +193,7 @@ def show_doc(request, id):
     }
 
     return render(request, 'students/dossier.html', context=context)
+
 
 @login_required
 def student_doc_pdf_view(request, pk):
