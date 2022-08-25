@@ -8,7 +8,7 @@ import pytest
 def test_ambiance_form_validate():
 
     """
-    Testing the SignUpForm to check if the user input data is properly validated or not
+    Testing the SignUpForm to check if the user input data is properly validated or not.
     """
 
     temp_ambiance = {
